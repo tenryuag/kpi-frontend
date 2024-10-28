@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { createDocente } from '../services/api';
 import styled from 'styled-components';
 import { neumorphism } from '../styles/neumorphism';
+import '../styles/style.css';
 
 const FormWrapper = styled.form`
   ${neumorphism}
@@ -24,19 +25,39 @@ const DocenteForm: React.FC = () => {
 
   return (
     <FormWrapper onSubmit={handleSubmit}>
-      <div>
-        <label>Nombre</label>
-        <input value={nombre} onChange={(e) => setNombre(e.target.value)} />
+      <div className="docente-list">
+        <div className="docente-info">
+          <label className="container">Nombre</label>
+          <input 
+            type="text" 
+            placeholder="Introduce el nombre"
+            className="input"
+            value={nombre} 
+            onChange={(e) => setNombre(e.target.value)} 
+          />
+        </div>
+        <div className="docente-info">
+          <label className="container">Apellido</label>
+          <input 
+            type="text" 
+            placeholder="Introduce el apellido"
+            className="input"
+            value={apellido} 
+            onChange={(e) => setApellido(e.target.value)} 
+          />
+        </div>
+        <div className="docente-info">
+          <label className="container">E-mail</label>
+          <input 
+            type="text" 
+            placeholder="Introduce el email"
+            className="input"
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+          />
+        </div>
+        <button type="submit">Agregar Docente</button>
       </div>
-      <div>
-        <label>Apellido</label>
-        <input value={apellido} onChange={(e) => setApellido(e.target.value)} />
-      </div>
-      <div>
-        <label>Email</label>
-        <input value={email} onChange={(e) => setEmail(e.target.value)} />
-      </div>
-      <button type="submit">Agregar Docente</button>
     </FormWrapper>
   );
 };

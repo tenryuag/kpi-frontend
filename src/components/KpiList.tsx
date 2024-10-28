@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { getKPIs, createKPI, deleteKPI } from '../services/api';
+import styled from 'styled-components';
+import { neumorphism } from '../styles/neumorphism';
+import '../styles/style.css';
+
+const FormWrapper = styled.form`
+  ${neumorphism}
+  margin-bottom: 20px;
+`;
 
 interface KPI {
   id: number;
@@ -36,30 +44,40 @@ const KPIList: React.FC = () => {
   };
 
   return (
-    <div>
+    <FormWrapper>
+    <div className="docente-info">
       <h2>KPI's Globales</h2>
-      <input
-        type="text"
-        placeholder="Nombre del KPI"
-        value={nombre}
-        onChange={(e) => setNombre(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Descripción"
-        value={descripcion}
-        onChange={(e) => setDescripcion(e.target.value)}
-      />
-      <button onClick={handleAddKPI}>Agregar KPI</button>
+      <ul>
+        <div>
+          <input
+            type="text"
+            placeholder="Nombre del KPI"
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+            className="input"
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="Descripción"
+            value={descripcion}
+            onChange={(e) => setDescripcion(e.target.value)}
+            className="input"
+          />
+        </div>
+          <button onClick={handleAddKPI}>Agregar KPI</button>
+      </ul>
       <ul>
         {kpis.map(kpi => (
-          <li key={kpi.id}>
+          <li key={kpi.id}  className="docente-item">
             {kpi.nombre}: {kpi.descripcion}
             <button onClick={() => handleDeleteKPI(kpi.id)}>Eliminar</button>
           </li>
         ))}
       </ul>
     </div>
+    </FormWrapper>
   );
 };
 

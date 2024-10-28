@@ -14,6 +14,14 @@ import {
     ChartOptions,
 } from 'chart.js';
 import '../styles/checkbox.css';
+import styled from 'styled-components';
+import { neumorphism } from '../styles/neumorphism';
+import '../styles/style.css';
+
+const FormWrapper = styled.form`
+  ${neumorphism}
+  margin-bottom: 20px;
+`;
 
 // Registro de escalas y elementos
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -116,6 +124,7 @@ const DocenteKPIView: React.FC = () => {
     };
 
   return (
+    <FormWrapper>
     <div className="responsive-container">
             <div className="table-container">
                 {nombres.length > 0 && (
@@ -174,6 +183,7 @@ const DocenteKPIView: React.FC = () => {
                 <Bar data={chartData} options={chartOptions} width={430} height={350} />
             </div>
         </div>
+    </FormWrapper>
     );
 };
 
