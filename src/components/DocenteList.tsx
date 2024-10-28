@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { deleteDocente, searchDocentes } from '../services/api';
 import { useNavigate } from 'react-router-dom'; 
-
-
-interface Docente {
-  id: number;
-  nombre: string;
-  apellido: string;
-  email: string;
-}
+import { Docente } from '../models/types';
+import '../styles/DocenteListStyle.css';
 
 const DocenteList: React.FC = () => {
   const [docentes, setDocentes] = useState<Docente[]>([]);
@@ -78,21 +72,27 @@ const DocenteList: React.FC = () => {
   return (
     <div>
       <h2>Lista de Docentes</h2>
-      <input
-        type="text"
-        placeholder="Buscar por nombre o apellido"
-        value={search}
-        onChange={handleSearchChange}
-      />
+        <input 
+          type="text" 
+          placeholder="Buscar por nombre"
+          value={search}
+          onChange={handleSearchChange}
+          className="input"
+        />
       <ul>
         {docentes.map(docente => (
-          <li key={docente.id}>
-            <input
-              type="checkbox"
-              checked={selectedDocentes.includes(docente.id)}
-              onChange={() => handleSelectDocente(docente.id)}
-            />
-            {docente.nombre} {docente.apellido} - {docente.email}
+          <li key={docente.id} className="docente-item">
+            <div className="docente-info">
+              <label className="container">
+                <input
+                  type="checkbox"
+                  checked={selectedDocentes.includes(docente.id)}
+                  onChange={() => handleSelectDocente(docente.id)}
+                />
+                <div className="checkmark"></div>
+              </label>
+              <span>{docente.nombre} {docente.apellido} - {docente.email}</span>
+            </div>
             <button onClick={() => handleViewKPIs(docente.id)}>
               Ver KPI's
             </button>

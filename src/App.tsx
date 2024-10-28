@@ -4,16 +4,19 @@ import KpiList from './components/KpiList';
 import DocenteForm from './components/DocenteForm';
 import DocenteKPIView from './components/DocenteKPIView';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import './App.css';
 
 const App: React.FC = () => {
   return (
     <Router>
       <div>
         {/* Menú principal */}
-        <nav style={{ padding: '10px', backgroundColor: '#f8f9fa', marginBottom: '20px' }}>
-          <Link to="/" style={{ margin: '0 15px' }}>Lista de Docentes</Link>
-          <Link to="/addDocente" style={{ margin: '0 15px' }}>Agregar Docente</Link>
-          <Link to="/kpilist" style={{ margin: '0 15px' }}>Lista de KPI's</Link>
+        <nav className="menu-bar">
+          <div className="group">
+            <Link to="/" className="item">Lista de Docentes</Link>
+            <Link to="/addDocente" className="item">Agregar Docente</Link>
+            <Link to="/kpilist" className="item">Lista de KPI's</Link>
+          </div>
         </nav>
         
         {/* Rutas de la aplicación */}
