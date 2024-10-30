@@ -50,7 +50,7 @@ button {
   
   .docente-list {
     list-style-type: none;
-    padding: 30px;
+    padding: 20px;
   }
   
   .docente-item {
@@ -64,7 +64,7 @@ button {
   .docente-info {
     display: flex;
     align-items: center;
-    padding: 5px;
+    padding: 1px;
   }
   
   .docente-info span {

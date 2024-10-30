@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getKPIs, createKPI, deleteKPI } from '../services/api';
-import styled from 'styled-components';
-import { neumorphism } from '../styles/neumorphism';
 import '../styles/style.css';
-
-const FormWrapper = styled.form`
-  ${neumorphism}
-  margin-bottom: 20px;
-`;
 
 interface KPI {
   id: number;
@@ -44,7 +37,6 @@ const KPIList: React.FC = () => {
   };
 
   return (
-    <FormWrapper>
     <div className="docente-info">
       <h2>KPI's Globales</h2>
       <ul>
@@ -77,7 +69,6 @@ const KPIList: React.FC = () => {
         ))}
       </ul>
     </div>
-    </FormWrapper>
   );
 };
 

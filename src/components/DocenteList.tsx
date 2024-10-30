@@ -2,14 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { deleteDocente, searchDocentes } from '../services/api';
 import { useNavigate } from 'react-router-dom'; 
 import { Docente } from '../models/types';
-import styled from 'styled-components';
-import { neumorphism } from '../styles/neumorphism';
 import '../styles/style.css';
-
-const FormWrapper = styled.form`
-  ${neumorphism}
-  margin-bottom: 20px;
-`;
 
 const DocenteList: React.FC = () => {
   const [docentes, setDocentes] = useState<Docente[]>([]);
@@ -77,7 +70,6 @@ const DocenteList: React.FC = () => {
   };
 
   return (
-    <FormWrapper>
     <div>
       <h2>Lista de Docentes</h2>
         <input 
@@ -105,6 +97,7 @@ const DocenteList: React.FC = () => {
               Ver KPI's
             </button>
           </li>
+          
         ))}
       </ul>
       <div>
@@ -121,7 +114,6 @@ const DocenteList: React.FC = () => {
         Eliminar Seleccionados
       </button>
     </div>
-    </FormWrapper>
   );
 };
 
